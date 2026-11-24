@@ -4,37 +4,113 @@
   "detectionValues": "=p250&0x00=0x0125",
   "initValues": "=p250&0x6004ff9c=p250",
   "pollInfo": {
-    "c": "=r4",
+    "c": "0x20=r17",
     "i": 100,
     "s": 1
   },
   "devInfoJson": {
     "name": "Photogate",
-    "desc": "Two raw infrared receiver ADC readings",
+    "desc": "Latest blocked and cleared times and current state of both gates",
     "manu": "Robotical",
     "type": "RoboticalPhotogate",
     "resp": {
-      "b": 4,
+      "b": 17,
       "a": [
         {
-          "n": "gate1Raw",
+          "n": "gate1BlockedUs",
           "at": 0,
-          "t": ">H",
-          "u": "counts",
-          "r": [
-            0,
-            4095
-          ]
+          "t": ">I",
+          "u": "us",
+          "vft": "gate1BlockedValid"
         },
         {
-          "n": "gate2Raw",
-          "at": 2,
-          "t": ">H",
-          "u": "counts",
+          "n": "gate1ClearedUs",
+          "at": 4,
+          "t": ">I",
+          "u": "us",
+          "vft": "gate1ClearedValid"
+        },
+        {
+          "n": "gate2BlockedUs",
+          "at": 8,
+          "t": ">I",
+          "u": "us",
+          "vft": "gate2BlockedValid"
+        },
+        {
+          "n": "gate2ClearedUs",
+          "at": 12,
+          "t": ">I",
+          "u": "us",
+          "vft": "gate2ClearedValid"
+        },
+        {
+          "n": "gate1Blocked",
+          "at": 16,
+          "t": "B",
+          "m": "0x01",
           "r": [
             0,
-            4095
-          ]
+            1
+          ],
+          "vft": "gatesReady"
+        },
+        {
+          "n": "gate2Blocked",
+          "at": 16,
+          "t": "B",
+          "m": "0x02",
+          "s": 1,
+          "r": [
+            0,
+            1
+          ],
+          "vft": "gatesReady"
+        },
+        {
+          "n": "gate1BlockedValid",
+          "at": 16,
+          "t": "B",
+          "m": "0x04",
+          "s": 2,
+          "vs": false,
+          "vf": false
+        },
+        {
+          "n": "gate1ClearedValid",
+          "at": 16,
+          "t": "B",
+          "m": "0x08",
+          "s": 3,
+          "vs": false,
+          "vf": false
+        },
+        {
+          "n": "gate2BlockedValid",
+          "at": 16,
+          "t": "B",
+          "m": "0x10",
+          "s": 4,
+          "vs": false,
+          "vf": false
+        },
+        {
+          "n": "gate2ClearedValid",
+          "at": 16,
+          "t": "B",
+          "m": "0x20",
+          "s": 5,
+          "vs": false,
+          "vf": false
+        },
+        {
+          "n": "gatesReady",
+          "at": 16,
+          "t": "B",
+          "m": "0x40",
+          "s": 6,
+          "vs": false,
+          "vf": false
         }
       ]
     }
